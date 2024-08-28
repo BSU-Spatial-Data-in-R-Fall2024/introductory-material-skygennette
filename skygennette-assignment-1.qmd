@@ -7,12 +7,33 @@ editor: visual
 
 ::: {style="color:#458B74"}
 1\. How does geographic analysis fit into your goals for your research? Given our discussion of the aims and limitations of geographic analysis, are there particular issues that you would like to know more about or guard against?
+:::
 
+I am interested in looking at spatial patterns in spectral diversity at mulitple scales. My research deals with very high resolution data that I am hoping to scale up to satellite data, so I am interested in questions of how to scale up data as well as data precision. 
+
+::: {style="color:#458B74"}
 2\. What are the primary components that describe spatial data?
+:::
+Spatial data are observations of attributes at specific locations. 
 
+::: {style="color:#458B74"}
 3\. What is the coordinate reference system and why is it important
+:::
+The coordinate reference system is a framework that is used to represent the Earth's surface when mapping. It includes the ellipsoid, datum, units, and projection that your data is being mapped onto. It is important to define and choose a CRS because different CRSs will cause slight differences in the data (e.g. position, area, distance) that need to be accounted for. 
 
+::: {style="color:#458B74"}
 4\. Find two maps of the same area in different projections? How does the projection affect your perception of the data being displayed?
+:::
 
+I found an example of Australia mapped in the same conical projection but one projection used one Standard Parallel and the other used two Standard parallels. The first cause much more distortion at that latitude and made Australia look espcially stretched out. https://www.icsm.gov.au/education/fundamentals-mapping/projections
+
+::: {style="color:#458B74"}
 5\. Read in the \`cejst.shp\` file in the \`assignment01\` folder. How many attributes describe each object? How many unique geometries are there? What is the coordinate reference system?
 :::
+```{r}
+library(sf)
+cejst <- st_read("/opt/data/data/assignment01/cejst_nw.shp")
+str(cejst)
+st_crs(cejst)
+```
+There are 123 attributes associated with the data. There are 2590 observations. The CRS is WGS84; however, it doesn't have a projection.
